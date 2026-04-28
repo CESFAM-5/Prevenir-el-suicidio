@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Prevención</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html, body {
+    width:100%; height:100%;
+    background:#e8f0fc;
+    overflow:hidden;
+  }
+
+  .stage {
+    width:100%;
+    height:100dvh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+  }
+
+  /* El img-wrap se redimensiona por JS */
+  #img-wrap {
+    position:relative;
+    flex-shrink:0;
+  }
+
+  #img-wrap img {
+    display:block;
+    width:100%;
+    height:100%;
+  }
+
+  .hotspot {
+    position:absolute;
+    display:block;
+    background:transparent;
+    z-index:10;
+    -webkit-tap-highlight-color:transparent;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div id="img-wrap">
+    <img id="portada" src="./portada.png" alt="Prevención y cuidado">
+
+    <!-- Hotspots en % de la imagen original 1080x1920 -->
+    <!-- ROJO: semáforo rojo + texto -->
+    <a href="./rojo.html" class="hotspot" id="h-rojo"
+       aria-label="Zona Roja - ayuda inmediata"></a>
+
+    <!-- AMARILLO: semáforo amarillo + texto -->
+    <a href="./amarillo.html" class="hotspot" id="h-amarillo"
+       aria-label="Zona Amarilla - orientación"></a>
+
+    <!-- VERDE: semáforo verde + texto -->
+    <a href="./verde.html" class="hotspot" id="h-verde"
+       aria-label="Zona Verde - autocuidado"></a>
+
+    <!-- CESFAM (círculo abajo izquierda) -->
+    <a href="https://sites.google.com/view/guiadeautoconsulta/guiaautoconsulta"
+       target="_blank" class="hotspot" id="h-cesfam"
+       aria-label="Guía de AutoConsulta"></a>
+
+    <!-- WHATSAPP (círculo abajo derecha) -->
+    <a href="https://api.whatsapp.com/send?text=https://cesfam-5.github.io/Prevenir-el-suicidio/"
+       target="_blank" rel="noopener noreferrer"
+       class="hotspot" id="h-wa"
+       aria-label="Compartir por WhatsApp"></a>
+  </div>
+</div>
+
+<script>
+  // Proporciones de cada hotspot sobre la imagen 1080x1920
+  // formato: [left%, top%, width%, height%, borderRadius]
+  const SPOTS = {
+    'h-rojo':    [8,   33.5, 84, 16.5, '12px'],
+    'h-amarillo':[8,   52.0, 84, 16.5, '12px'],
+    'h-verde':   [8,   70.5, 84, 16.0, '12px'],
+    'h-cesfam':  [55,  91.5, 17,  6.5, '999px'],
+    'h-wa':      [74,  91.5, 17,  6.5, '999px'],
+  };
+
+  function resize() {
+    const wrap = document.getElementById('img-wrap');
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const imgRatio = 1080 / 1920; // 9:16
+
+    let w, h;
+    if (vw / vh < imgRatio) {
+      // pantalla más alta que la imagen → ajustar por ancho
+      w = vw;
+      h = vw / imgRatio;
+    } else {
+      // pantalla más ancha → ajustar por alto
+      h = vh;
+      w = vh * imgRatio;
+    }
+
+    wrap.style.width  = w + 'px';
+    wrap.style.height = h + 'px';
+
+    // Posicionar cada hotspot
+    for (const [id, [l, t, bw, bh, br]] of Object.entries(SPOTS)) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      el.style.left         = (l / 100 * w) + 'px';
+      el.style.top          = (t / 100 * h) + 'px';
+      el.style.width        = (bw / 100 * w) + 'px';
+      el.style.height       = (bh / 100 * h) + 'px';
+      el.style.borderRadius = br;
+    }
+  }
+
+  document.getElementById('portada').addEventListener('load', resize);
+  window.addEventListener('resize', resize);
+  resize();
+</script>
+</body>
+</html>
