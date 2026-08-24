@@ -114,6 +114,37 @@
     .women-button   { border-left: 3px solid #e74c3c; }
     .support-button { border-left: 3px solid #3498db; }
     .map-button     { border-left: 3px solid #27ae60; }
+    .card-wrap { position: relative; }
+    .btn-info {
+      position: absolute; top: 7px; right: 7px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,255,255,0.9); border: 1.5px solid #C8D8E5;
+      color: #3B5F7A; font-size: 11px; font-weight: 700;
+      font-family: serif; line-height: 19px; text-align: center;
+      cursor: pointer; z-index: 10;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-info:active { background: #E8EFF5; }
+    #panel-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;display:none; }
+    #panel-overlay.visible { display:block; }
+    .info-sheet {
+      position:fixed;bottom:0;left:0;right:0;background:white;
+      border-radius:20px 20px 0 0;padding:18px 18px 36px;
+      max-height:78vh;overflow-y:auto;z-index:201;
+      transform:translateY(100%);transition:transform 0.28s ease;
+    }
+    .info-sheet.visible { transform:translateY(0); }
+    .sheet-handle { width:36px;height:4px;background:#C8D8E5;border-radius:2px;margin:0 auto 14px; }
+    .sheet-close {
+      position:absolute;top:14px;right:14px;background:#F4F6F8;border:none;
+      border-radius:50%;width:28px;height:28px;font-size:13px;color:#5A6470;
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+    }
+    .sheet-titulo { font-size:16px;font-weight:700;color:#2c3e50;margin-bottom:4px; }
+    .sheet-numero { font-size:22px;font-weight:700;color:#3B5F7A;margin-bottom:12px;letter-spacing:0.03em; }
+    .sheet-desc { font-size:14px;color:#2c3e50;line-height:1.6;margin-bottom:12px; }
+    .sheet-horario { background:#F4F6F8;border-radius:10px;padding:10px 12px;font-size:13px;color:#5A6470;line-height:1.5; }
   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8T3QZPR724"></script>
@@ -133,7 +164,7 @@
     </div>
 
     <div class="button-grid">
-      <a href="tel:800400035" class="emergency-button phone-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-mayor')">i</button><a href="tel:800400035" class="emergency-button phone-button">
         <div class="icon-container"><img src="https://i.ibb.co/vC0tfBGR/1.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar "Fono Mayor"</div>
@@ -141,7 +172,7 @@
         </div>
       </a>
 
-      <a href="tel:149" class="emergency-button phone-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-familia')">i</button><a href="tel:149" class="emergency-button phone-button">
         <div class="icon-container"><img src="https://i.ibb.co/qMDcJc6h/2.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Familia"</div>
@@ -149,7 +180,7 @@
         </div>
       </a>
 
-      <a href="tel:1455" class="emergency-button women-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-mujer')">i</button><a href="tel:1455" class="emergency-button women-button">
         <div class="icon-container"><img src="https://i.ibb.co/2Yq7KwTb/3.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Mujer"</div>
@@ -157,7 +188,7 @@
         </div>
       </a>
 
-      <a href="https://wa.me/56997007000" class="emergency-button women-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('whatsapp-silencioso')">i</button><a href="https://wa.me/56997007000" class="emergency-button women-button">
         <div class="icon-container"><img src="https://i.ibb.co/CptjMYPb/4.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">WhatsApp Silencioso</div>
@@ -165,7 +196,7 @@
         </div>
       </a>
 
-      <a href="tel:147" class="emergency-button phone-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-ninos')">i</button><a href="tel:147" class="emergency-button phone-button">
         <div class="icon-container"><img src="https://i.ibb.co/mVs1ZnY0/5.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Niños"</div>
@@ -173,7 +204,7 @@
         </div>
       </a>
 
-      <a href="tel:800200818" class="emergency-button phone-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-infancia')">i</button><a href="tel:800200818" class="emergency-button phone-button">
         <div class="icon-container"><img src="https://i.ibb.co/6J44Bnxq/6.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Infancia"</div>
@@ -181,7 +212,7 @@
         </div>
       </a>
 
-      <a href="tel:800378800" class="emergency-button support-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-sida')">i</button><a href="tel:800378800" class="emergency-button support-button">
         <div class="icon-container"><img src="https://i.ibb.co/mFrf177C/ribbon-15371434.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono SIDA"</div>
@@ -189,7 +220,7 @@
         </div>
       </a>
 
-      <a href="tel:1412" class="emergency-button support-button">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-drogas')">i</button><a href="tel:1412" class="emergency-button support-button">
         <div class="icon-container"><img src="https://i.ibb.co/M5D9YBZK/7.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Fono Drogas y Alcohol</div>
@@ -197,7 +228,7 @@
         </div>
       </a>
 
-      <a href="https://www.sernameg.gob.cl/metropolitana/" class="emergency-button women-button" target="_blank">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('centros-mujer')">i</button><a href="https://www.sernameg.gob.cl/metropolitana/" class="emergency-button women-button" target="_blank">
         <div class="icon-container"><img src="https://i.ibb.co/GfnTkY69/8.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Centros de la Mujer</div>
@@ -205,7 +236,7 @@
         </div>
       </a>
 
-      <a href="https://www.google.com/maps/d/edit?mid=1dgJqn6sC6GM9k_E7qDXLVAuB32H_ric&usp=sharing" class="emergency-button map-button" target="_blank">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('sistema-publico')">i</button><a href="https://www.google.com/maps/d/edit?mid=1dgJqn6sC6GM9k_E7qDXLVAuB32H_ric&usp=sharing" class="emergency-button map-button" target="_blank">
         <div class="icon-container"><img src="https://i.ibb.co/7tHh4brS/10.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Sistema Público</div>
@@ -213,7 +244,7 @@
         </div>
       </a>
 
-      <a href="https://www.google.com/maps/d/edit?mid=1m8Qv31iKL7NzeE4ERgC4ExMybj1NW-w&usp=sharing" class="emergency-button map-button" target="_blank">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('salud-privada')">i</button><a href="https://www.google.com/maps/d/edit?mid=1m8Qv31iKL7NzeE4ERgC4ExMybj1NW-w&usp=sharing" class="emergency-button map-button" target="_blank">
         <div class="icon-container"><img src="https://i.ibb.co/kgsKM4WV/9.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Salud Privada</div>
@@ -221,7 +252,7 @@
         </div>
       </a>
 
-      <a href="https://apoyovictimas.cl" class="emergency-button support-button" target="_blank">
+      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('apoyo-victimas')">i</button><a href="https://apoyovictimas.cl" class="emergency-button support-button" target="_blank">
         <div class="icon-container"><img src="https://i.ibb.co/60KVxSTz/11.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Apoyo a Víctimas</div>
@@ -230,5 +261,44 @@
       </a>
     </div>
   </div>
+
+  <div id="panel-overlay" onclick="cerrarPanel()"></div>
+  <div class="info-sheet" id="info-sheet">
+    <div class="sheet-handle"></div>
+    <button class="sheet-close" onclick="cerrarPanel()">&#x2715;</button>
+    <div class="sheet-titulo" id="sheet-titulo"></div>
+    <div class="sheet-numero" id="sheet-numero"></div>
+    <div class="sheet-desc" id="sheet-desc"></div>
+    <div class="sheet-horario" id="sheet-horario"></div>
+  </div>
+  <script>
+    var INFO = {
+      "fono-mayor":{"titulo":"Fono Mayor","numero":"800 400 035","desc":"Servicio de orientación telefónica gratuita del SENAMA dirigido a personas mayores de 60 años y sus familias. Entrega orientación sobre derechos, maltrato, soledad y derivación a servicios de apoyo.","horario":"Lunes a jueves: 09:00 – 18:00 | Viernes: 09:00 – 17:00 | Llamada gratuita"},
+      "fono-familia":{"titulo":"Fono Familia","numero":"149","desc":"Servicio gratuito de emergencia de Carabineros de Chile para personas que son o podrían ser víctimas de violencia intrafamiliar. Entrega orientación, información actualizada y apoyo preventivo para minimizar situaciones de riesgo en el ámbito familiar.","horario":"Atención 24/7 | Llamada gratuita"},
+      "fono-mujer":{"titulo":"Fono Mujer","numero":"1455","desc":"Línea del Ministerio de la Mujer y Equidad de Género para mujeres que viven o han vivido situaciones de violencia de género. Entrega orientación, contención emocional y derivación a centros especializados.","horario":"Todos los días: 08:00 – 00:00 | Llamada gratuita"},
+      "whatsapp-silencioso":{"titulo":"WhatsApp Silencioso","numero":"+569 9700 7000","desc":"Canal de WhatsApp del Ministerio de la Mujer y Equidad de Género para mujeres que no pueden hablar en voz alta por estar en situación de riesgo. Permite comunicarse por texto de forma discreta y segura.","horario":"Todos los días del año: 08:00 – 00:00"},
+      "fono-ninos":{"titulo":"Fono Niños","numero":"147","desc":"Servicio telefónico gratuito de emergencia de Carabineros de Chile, dirigido a niñas, niños y adolescentes víctimas de amenazas o vulneración de sus derechos. Entrega orientación, acoge requerimientos y concurre en auxilio procediendo a la denuncia cuando corresponde.","horario":"24 horas | 365 días del año | Desde teléfono fijo o móvil | Gratuito"},
+      "fono-infancia":{"titulo":"Fono Infancia","numero":"800 200 818","desc":"Servicio de Fundación Integra que permite llamar o chatear con profesionales especializados en crianza respetuosa y buen trato. Entrega herramientas a adultos para promover relaciones saludables y la protección integral de los derechos de la niñez.","horario":"Lunes a viernes: 08:30 – 19:00 | Llamada gratuita"},
+      "fono-sida":{"titulo":"Fono SIDA","numero":"800 378 800","desc":"Línea del Ministerio de Salud que entrega información confidencial sobre VIH/SIDA, formas de prevención, dónde realizarse el examen y orientación para personas que viven con VIH.","horario":"Atención 24/7 | Llamada gratuita | Confidencial"},
+      "fono-drogas":{"titulo":"Fono Drogas y Alcohol","numero":"1412","desc":"Servicio del SENDA para la Prevención y Rehabilitación del Consumo de Drogas y Alcohol. Entrega orientación, contención y derivación a programas de tratamiento.","horario":"Atención 24/7 | Llamada gratuita | Completamente confidencial"},
+      "centros-mujer":{"titulo":"Centros de la Mujer","numero":"SernamEG","desc":"Red de centros especializados en atención a mujeres víctimas de violencia de pareja. Ofrecen atención psicológica, social y jurídica de forma gratuita y confidencial.","horario":"Abre el sitio de SernamEG Región Metropolitana con la ubicación de los centros más cercanos."},
+      "sistema-publico":{"titulo":"Sistema Público de Salud Mental","numero":"Red RM","desc":"Mapa con la red de centros de salud mental, COSAM, hospitales y servicios públicos de atención psiquiátrica en la Región Metropolitana.","horario":"Abre Google Maps con los puntos marcados."},
+      "salud-privada":{"titulo":"Salud Privada","numero":"Red RM","desc":"Mapa con clínicas y centros privados de atención en salud mental en la Región Metropolitana.","horario":"Abre Google Maps con los puntos marcados."},
+      "apoyo-victimas":{"titulo":"Apoyo a Víctimas","numero":"apoyovictimas.cl","desc":"Servicio de la Subsecretaría de Prevención del Delito que brinda apoyo jurídico, social y psicológico a personas afectadas por delitos. Un equipo profesional orienta para ejercer plenamente los derechos de las víctimas.","horario":"Abre el sitio web de Apoyo a Víctimas."}
+    };
+    function abrirPanel(id) {
+      var d = INFO[id]; if (!d) return;
+      document.getElementById('sheet-titulo').textContent = d.titulo;
+      document.getElementById('sheet-numero').textContent = d.numero;
+      document.getElementById('sheet-desc').textContent = d.desc;
+      document.getElementById('sheet-horario').textContent = d.horario;
+      document.getElementById('panel-overlay').classList.add('visible');
+      setTimeout(function(){ document.getElementById('info-sheet').classList.add('visible'); }, 10);
+    }
+    function cerrarPanel() {
+      document.getElementById('info-sheet').classList.remove('visible');
+      setTimeout(function(){ document.getElementById('panel-overlay').classList.remove('visible'); }, 280);
+    }
+  </script>
 </body>
 </html>
