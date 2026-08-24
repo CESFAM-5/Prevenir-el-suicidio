@@ -114,17 +114,17 @@
     .women-button   { border-left: 3px solid #e74c3c; }
     .support-button { border-left: 3px solid #3498db; }
     .map-button     { border-left: 3px solid #27ae60; }
-    .card-wrap { position: relative; display: flex; }
-    .emergency-button { flex: 1; }
+    .emergency-button { position: relative; }
     .btn-info {
       position: absolute; top: 7px; right: 7px;
       width: 22px; height: 22px; border-radius: 50%;
-      background: rgba(255,255,255,0.9); border: 1.5px solid #C8D8E5;
+      background: rgba(255,255,255,0.92); border: 1.5px solid #C8D8E5;
       color: #3B5F7A; font-size: 11px; font-weight: 700;
       font-family: serif; line-height: 19px; text-align: center;
       cursor: pointer; z-index: 10;
       box-shadow: 0 1px 4px rgba(0,0,0,0.12);
       -webkit-tap-highlight-color: transparent;
+      display: inline-block;
     }
     .btn-info:active { background: #E8EFF5; }
     #panel-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;display:none; }
@@ -165,7 +165,8 @@
     </div>
 
     <div class="button-grid">
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-mayor')">i</button><a href="tel:800400035" class="emergency-button phone-button">
+      <a href="tel:800400035" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-mayor')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/vC0tfBGR/1.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar "Fono Mayor"</div>
@@ -173,7 +174,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-familia')">i</button><a href="tel:149" class="emergency-button phone-button">
+      <a href="tel:149" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-familia')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/qMDcJc6h/2.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Familia"</div>
@@ -181,7 +183,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-mujer')">i</button><a href="tel:1455" class="emergency-button women-button">
+      <a href="tel:1455" class="emergency-button women-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-mujer')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/2Yq7KwTb/3.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Mujer"</div>
@@ -189,7 +192,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('whatsapp-silencioso')">i</button><a href="https://wa.me/56997007000" class="emergency-button women-button">
+      <a href="https://wa.me/56997007000" class="emergency-button women-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('whatsapp-silencioso')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/CptjMYPb/4.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">WhatsApp Silencioso</div>
@@ -197,7 +201,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-ninos')">i</button><a href="tel:147" class="emergency-button phone-button">
+      <a href="tel:147" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-ninos')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/mVs1ZnY0/5.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Niños"</div>
@@ -205,7 +210,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-infancia')">i</button><a href="tel:800200818" class="emergency-button phone-button">
+      <a href="tel:800200818" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-infancia')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/6J44Bnxq/6.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono Infancia"</div>
@@ -213,7 +219,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-sida')">i</button><a href="tel:800378800" class="emergency-button support-button">
+      <a href="tel:800378800" class="emergency-button support-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-sida')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/mFrf177C/ribbon-15371434.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Llamar a "Fono SIDA"</div>
@@ -221,7 +228,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-drogas')">i</button><a href="tel:1412" class="emergency-button support-button">
+      <a href="tel:1412" class="emergency-button support-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('fono-drogas')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/M5D9YBZK/7.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Fono Drogas y Alcohol</div>
@@ -229,7 +237,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('centros-mujer')">i</button><a href="https://www.sernameg.gob.cl/metropolitana/" class="emergency-button women-button" target="_blank">
+      <a href="https://www.sernameg.gob.cl/metropolitana/" class="emergency-button women-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('centros-mujer')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/GfnTkY69/8.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Centros de la Mujer</div>
@@ -237,7 +246,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('sistema-publico')">i</button><a href="https://www.google.com/maps/d/edit?mid=1dgJqn6sC6GM9k_E7qDXLVAuB32H_ric&usp=sharing" class="emergency-button map-button" target="_blank">
+      <a href="https://www.google.com/maps/d/edit?mid=1dgJqn6sC6GM9k_E7qDXLVAuB32H_ric&usp=sharing" class="emergency-button map-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('sistema-publico')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/7tHh4brS/10.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Sistema Público</div>
@@ -245,7 +255,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('salud-privada')">i</button><a href="https://www.google.com/maps/d/edit?mid=1m8Qv31iKL7NzeE4ERgC4ExMybj1NW-w&usp=sharing" class="emergency-button map-button" target="_blank">
+      <a href="https://www.google.com/maps/d/edit?mid=1m8Qv31iKL7NzeE4ERgC4ExMybj1NW-w&usp=sharing" class="emergency-button map-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('salud-privada')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/kgsKM4WV/9.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Salud Privada</div>
@@ -253,7 +264,8 @@
         </div>
       </a>
 
-      <div class="card-wrap"><button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('apoyo-victimas')">i</button><a href="https://apoyovictimas.cl" class="emergency-button support-button" target="_blank">
+      <a href="https://apoyovictimas.cl" class="emergency-button support-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('apoyo-victimas')">i</button>
         <div class="icon-container"><img src="https://i.ibb.co/60KVxSTz/11.png" class="custom-icon"></div>
         <div class="text-container">
           <div class="button-main-text">Apoyo a Víctimas</div>
