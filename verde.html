@@ -5,126 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zona verde: Salud Mental Cotidiana</title>
 <meta name="description" content="Recursos simples para cultivar el bienestar emocional,
-a tu ritmo disponibles en la Región Metropolitana.">
+a tu ritmo disponibles en la Region Metropolitana.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="CESFAM N°5 — Dirección de Atención Primaria de Salud, DAP. Servicio de Salud Metropolitano Central">
 <link rel="canonical" href="https://cesfam-5.github.io/Prevenir-el-suicidio/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Prevención del Suicidio — Ayuda inmediata | CESFAM N°5">
-<meta property="og:description" content="Líneas de crisis, urgencias psiquiátricas
-  y recursos de salud mental disponibles ahora en Región Metropolitana de Santiago.">
+<meta property="og:description" content="Líneas de crisis, urgencias psiquiátricas y recursos de salud mental disponibles ahora en Región Metropolitana de Santiago.">
 <meta property="og:image" content="https://cesfam-5.github.io/Prevenir-el-suicidio/portada.png">
 <meta property="og:url" content="https://cesfam-5.github.io/Prevenir-el-suicidio/">
-<meta property="og:locale" content="es_CL">  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<meta property="og:locale" content="es_CL">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #d9ead3;
-      overflow: hidden;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      padding-bottom: 30px;
-    }
-
-    .header-section {
-      padding: 15px 15px 10px;
-      text-align: center;
-    }
-
-    .main-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #2c3e50;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      font-size: 13.5px;
-      color: #5d6d7e;
-      line-height: 1.4;
-      margin-bottom: 5px;
-    }
-
-    .highlight {
-      font-weight: 700;
-      color: #27ae60;
-    }
-
-    .button-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 10px 15px;
-    }
-
+    html, body { margin:0; padding:0; background-color:#d9ead3; overflow:hidden; font-family:'Open Sans', sans-serif; }
+    .container { width:100%; max-width:800px; margin:0 auto; padding-bottom:30px; }
+    .header-section { padding:15px 15px 10px; text-align:center; }
+    .main-title { font-size:20px; font-weight:700; color:#2c3e50; margin-bottom:8px; line-height:1.2; }
+    .subtitle { font-size:13.5px; color:#5d6d7e; line-height:1.4; margin-bottom:5px; }
+    .highlight { font-weight:700; color:#27ae60; }
+    .button-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:10px 15px; }
     .emergency-button {
-      background-color: #f2f9f2;
-      color: #2c3e50;
-      padding: 15px 10px;
-      text-align: center;
-      border-radius: 20px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 150px;
-      border: none;
-      transition: all 0.2s ease;
-      box-shadow: 7px 7px 14px #d5e0d5, -7px -7px 14px #ffffff;
+      background-color:#f2f9f2; color:#2c3e50; padding:15px 10px;
+      text-align:center; border-radius:20px; text-decoration:none;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      height:150px; border:none; transition:all 0.2s ease;
+      box-shadow:7px 7px 14px #d5e0d5,-7px -7px 14px #ffffff;
+      position:relative;
     }
-
-    .emergency-button:active {
-      box-shadow: inset 5px 5px 10px #d5e0d5, inset -5px -5px 10px #ffffff;
-      transform: scale(0.97);
+    .emergency-button:active { box-shadow:inset 5px 5px 10px #d5e0d5,inset -5px -5px 10px #ffffff; transform:scale(0.97); }
+    .icon-container { height:55px; margin-bottom:8px; display:flex; align-items:center; }
+    .custom-icon { width:50px; height:50px; object-fit:contain; filter:drop-shadow(2px 2px 2px rgba(0,0,0,0.05)); }
+    .button-main-text { font-size:13px; font-weight:700; margin-bottom:4px; line-height:1.1; color:#2c3e50; }
+    .button-desc { font-size:10px; color:#7f8c8d; line-height:1.2; }
+    .bienestar-button { border-left:4px solid #27ae60; }
+    .emocional-button { border-left:4px solid #3498db; }
+    .apoyo-button     { border-left:4px solid #9b59b6; }
+    .mapas-button     { border-left:4px solid #f39c12; }
+    .btn-info {
+      position:absolute; top:7px; right:7px;
+      width:22px; height:22px; border-radius:50%;
+      background:rgba(255,255,255,0.92); border:1.5px solid #C8D8E5;
+      color:#3B5F7A; font-size:11px; font-weight:700;
+      font-family:serif; line-height:19px; text-align:center;
+      cursor:pointer; z-index:10;
+      box-shadow:0 1px 4px rgba(0,0,0,0.12);
+      -webkit-tap-highlight-color:transparent;
+      display:inline-block;
     }
-
-    .icon-container {
-      height: 55px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
+    .btn-info:active { background:#E8EFF5; }
+    #panel-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;display:none; }
+    #panel-overlay.visible { display:block; }
+    .info-sheet {
+      position:fixed;bottom:0;left:0;right:0;background:white;
+      border-radius:20px 20px 0 0;padding:18px 18px 36px;
+      max-height:78vh;overflow-y:auto;z-index:201;
+      transform:translateY(100%);transition:transform 0.28s ease;
     }
-
-    .custom-icon {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.05));
+    .info-sheet.visible { transform:translateY(0); }
+    .sheet-handle { width:36px;height:4px;background:#C8D8E5;border-radius:2px;margin:0 auto 14px; }
+    .sheet-close {
+      position:absolute;top:14px;right:14px;background:#F4F6F8;border:none;
+      border-radius:50%;width:28px;height:28px;font-size:13px;color:#5A6470;
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
     }
-
-    .button-main-text {
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      line-height: 1.1;
-      color: #2c3e50;
-    }
-
-    .button-desc {
-      font-size: 10px;
-      color: #7f8c8d;
-      line-height: 1.2;
-    }
-
-    .bienestar-button { border-left: 4px solid #27ae60; }
-    .emocional-button { border-left: 4px solid #3498db; }
-    .apoyo-button     { border-left: 4px solid #9b59b6; }
-    .mapas-button     { border-left: 4px solid #f39c12; }
-  </style><!-- Google tag (gtag.js) -->
+    .sheet-titulo { font-size:16px;font-weight:700;color:#27ae60;margin-bottom:4px; }
+    .sheet-numero { font-size:15px;font-weight:600;color:#2c3e50;margin-bottom:12px; }
+    .sheet-desc { font-size:14px;color:#2c3e50;line-height:1.6;margin-bottom:12px; }
+    .sheet-horario { background:#f2f9f2;border-radius:10px;padding:10px 12px;font-size:13px;color:#5A6470;line-height:1.5; }
+  </style>
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8T3QZPR724"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-8T3QZPR724');
 </script>
 </head>
@@ -137,6 +91,7 @@ a tu ritmo disponibles en la Región Metropolitana.">
 
     <div class="button-grid">
       <a href="./verde-bienestar.html" class="emergency-button bienestar-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('bienestar')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/YTh0KSTC/Mi-Bienestar-Cotidiano.png" class="custom-icon" alt="Bienestar">
         </div>
@@ -145,6 +100,7 @@ a tu ritmo disponibles en la Región Metropolitana.">
       </a>
 
       <a href="./verde-emocional.html" class="emergency-button emocional-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('emocional')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/7dSRw9wg/Cuidado-Emocional.png" class="custom-icon" alt="Cuidado">
         </div>
@@ -153,6 +109,7 @@ a tu ritmo disponibles en la Región Metropolitana.">
       </a>
 
       <a href="./verde-apoyo.html" class="emergency-button apoyo-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('apoyo')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/ycsmcNNZ/unity-3782362.png" class="custom-icon" alt="Red">
         </div>
@@ -161,6 +118,7 @@ a tu ritmo disponibles en la Región Metropolitana.">
       </a>
 
       <a href="./verde-mapas.html" class="emergency-button mapas-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('mapas')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/1JbQsbjQ/Guias-YMapas.png" class="custom-icon" alt="Guias">
         </div>
@@ -169,5 +127,32 @@ a tu ritmo disponibles en la Región Metropolitana.">
       </a>
     </div>
   </div>
+
+  <div id="panel-overlay" onclick="cerrarPanel()"></div>
+  <div class="info-sheet" id="info-sheet">
+    <div class="sheet-handle"></div>
+    <button class="sheet-close" onclick="cerrarPanel()">&#x2715;</button>
+    <div class="sheet-titulo" id="sheet-titulo"></div>
+    <div class="sheet-numero" id="sheet-numero"></div>
+    <div class="sheet-desc" id="sheet-desc"></div>
+    <div class="sheet-horario" id="sheet-horario"></div>
+  </div>
+
+  <script>
+    var INFO = {"bienestar":{"titulo":"Mi Bienestar Cotidiano","numero":"Secci\u00f3n de autocuidado","desc":"Secci\u00f3n dedicada a h\u00e1bitos y rutinas que fortalecen la salud mental desde el d\u00eda a d\u00eda. Incluye orientaci\u00f3n sobre nutrici\u00f3n, actividad f\u00edsica, sue\u00f1o y otras pr\u00e1cticas de autocuidado que contribuyen al bienestar emocional.","horario":"Toca el bot\u00f3n para abrir la secci\u00f3n Mi Bienestar Cotidiano."},"emocional":{"titulo":"Cuidado Emocional","numero":"Primeros auxilios psicol\u00f3gicos","desc":"Recursos de primeros auxilios psicol\u00f3gicos y apoyo emocional para momentos dif\u00edciles. Herramientas pr\u00e1cticas para reconocer se\u00f1ales de malestar, manejar el estr\u00e9s y saber cu\u00e1ndo y c\u00f3mo pedir ayuda.","horario":"Toca el bot\u00f3n para abrir la secci\u00f3n Cuidado Emocional."},"apoyo":{"titulo":"Red de Apoyo","numero":"Recursos comunitarios","desc":"Informaci\u00f3n sobre redes comunitarias, organizaciones y recursos locales disponibles en el territorio. El tejido comunitario como factor protector de la salud mental.","horario":"Toca el bot\u00f3n para abrir la secci\u00f3n Red de Apoyo."},"mapas":{"titulo":"Gu\u00edas y Mapas","numero":"Herramientas para tu territorio","desc":"Gu\u00edas pr\u00e1cticas y mapas de recursos de salud mental para orientarte en tu territorio de la Regi\u00f3n Metropolitana. Encuentra los servicios y espacios m\u00e1s cercanos a ti.","horario":"Toca el bot\u00f3n para abrir la secci\u00f3n Gu\u00edas y Mapas."}};
+    function abrirPanel(id) {
+      var d = INFO[id]; if (!d) return;
+      document.getElementById('sheet-titulo').textContent = d.titulo;
+      document.getElementById('sheet-numero').textContent = d.numero;
+      document.getElementById('sheet-desc').textContent = d.desc;
+      document.getElementById('sheet-horario').textContent = d.horario;
+      document.getElementById('panel-overlay').classList.add('visible');
+      setTimeout(function(){ document.getElementById('info-sheet').classList.add('visible'); }, 10);
+    }
+    function cerrarPanel() {
+      document.getElementById('info-sheet').classList.remove('visible');
+      setTimeout(function(){ document.getElementById('panel-overlay').classList.remove('visible'); }, 280);
+    }
+  </script>
 </body>
 </html>
