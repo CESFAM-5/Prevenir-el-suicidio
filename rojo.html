@@ -115,6 +115,38 @@
     .map-button      { border-left: 3px solid #27ae60; }
     .chat-button     { border-left: 3px solid #9b59b6; }
     .share-button    { border-left: 3px solid #f39c12; }
+    .emergency-button { position: relative; }
+    .btn-info {
+      position: absolute; top: 7px; right: 7px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,255,255,0.92); border: 1.5px solid #C8D8E5;
+      color: #3B5F7A; font-size: 11px; font-weight: 700;
+      font-family: serif; line-height: 19px; text-align: center;
+      cursor: pointer; z-index: 10;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      -webkit-tap-highlight-color: transparent;
+      display: inline-block;
+    }
+    .btn-info:active { background: #E8EFF5; }
+    #panel-overlay { position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;display:none; }
+    #panel-overlay.visible { display:block; }
+    .info-sheet {
+      position:fixed;bottom:0;left:0;right:0;background:white;
+      border-radius:20px 20px 0 0;padding:18px 18px 36px;
+      max-height:80vh;overflow-y:auto;z-index:201;
+      transform:translateY(100%);transition:transform 0.28s ease;
+    }
+    .info-sheet.visible { transform:translateY(0); }
+    .sheet-handle { width:36px;height:4px;background:#C8D8E5;border-radius:2px;margin:0 auto 14px; }
+    .sheet-close {
+      position:absolute;top:14px;right:14px;background:#F4F6F8;border:none;
+      border-radius:50%;width:28px;height:28px;font-size:13px;color:#5A6470;
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+    }
+    .sheet-titulo { font-size:16px;font-weight:700;color:#2c3e50;margin-bottom:4px; }
+    .sheet-numero { font-size:20px;font-weight:700;color:#e74c3c;margin-bottom:12px;letter-spacing:0.03em; }
+    .sheet-desc { font-size:14px;color:#2c3e50;line-height:1.6;margin-bottom:12px; }
+    .sheet-horario { background:#F4F6F8;border-radius:10px;padding:10px 12px;font-size:13px;color:#5A6470;line-height:1.6; }
   </style>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8T3QZPR724"></script>
@@ -136,6 +168,7 @@
     <div class="button-grid">
       <!-- Fila 1: Llamadas telefónicas -->
       <a href="tel:*4141" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('linea-4141')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/PsWZykSQ/No-estas-solo.png" class="custom-icon" alt="Teléfono">
         </div>
@@ -146,6 +179,7 @@
       </a>
 
       <a href="tel:6003607777" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('salud-responde')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/mr7MYqkh/Salud-responde.png" class="custom-icon" alt="Teléfono">
         </div>
@@ -157,6 +191,7 @@
 
       <!-- Fila 2 -->
       <a href="tel:131" class="emergency-button phone-button">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('samu')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/Fk3FJL4j/Logo-SAMU-Metropolitano.png" class="custom-icon" alt="SAMU">
         </div>
@@ -167,6 +202,7 @@
       </a>
 
       <a href="https://share.google/VQwfhfoKeS7JQkOXP" class="emergency-button hospital-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('san-borja')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/TxcPQMR8/Logo-HCSBA-png200x216-removebg-preview.png" class="custom-icon" alt="Hospital">
         </div>
@@ -178,6 +214,7 @@
 
       <!-- Fila 3 -->
       <a href="https://maps.app.goo.gl/eDDhsCQG9VbraVzP7" class="emergency-button hospital-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('horwitz')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/spM8MZZf/Horwitz.png" class="custom-icon" alt="Hospital">
         </div>
@@ -188,6 +225,7 @@
       </a>
 
       <a href="https://share.google/XS086QoV0tizISuR2" class="emergency-button hospital-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('barros-luco')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/gL2KjPkd/Barros-luco-si.png" class="custom-icon" alt="Hospital">
         </div>
@@ -199,6 +237,7 @@
 
       <!-- Fila 4 -->
       <a href="https://share.google/zktMg7em3SEg0vdjT" class="emergency-button hospital-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('huap')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/6RyF2nkJ/HUAP-logo-150x150-removebg-preview.png" class="custom-icon" alt="Hospital">
         </div>
@@ -209,6 +248,7 @@
       </a>
 
       <a href="https://share.google/ZZf6HvPMFtF2CbL2Z" class="emergency-button hospital-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('el-carmen')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/7tGS1fcC/Logo-el-carmen-removebg-preview.png" class="custom-icon" alt="Hospital">
         </div>
@@ -219,6 +259,7 @@
       </a>
 
       <a href="https://www.google.com/maps/d/edit?mid=1dgJqn6sC6GM9k_E7qDXLVAuB32H_ric&usp=drive_link" class="emergency-button map-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('mapa-sapus')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/V0Hjk8ZM/8.png" class="custom-icon" alt="Mapa">
         </div>
@@ -230,6 +271,7 @@
 
       <!-- Fila 5: Chats -->
       <a href="https://hablemosdetodo.injuv.gob.cl/#" class="emergency-button chat-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('hablemos-todo')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/6JDFMWfB/9.png" class="custom-icon" alt="Chat">
         </div>
@@ -240,6 +282,7 @@
       </a>
 
       <a href="https://www.todomejora.org/que-hacemos/hora-segura" class="emergency-button chat-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('hora-segura')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/s9Xts2kx/10.png" class="custom-icon" alt="Chat">
         </div>
@@ -251,6 +294,7 @@
 
       <!-- Fila 6 -->
       <a href="https://quedate.saludoriente.cl/" class="emergency-button chat-button" target="_blank">
+        <button class="btn-info" onclick="event.preventDefault();event.stopPropagation();abrirPanel('quedate')">i</button>
         <div class="icon-container">
           <img src="https://i.ibb.co/JF5BhVq1/11.png" class="custom-icon" alt="Chat">
         </div>
@@ -262,5 +306,31 @@
 
     </div>
   </div>
+
+  <div id="panel-overlay" onclick="cerrarPanel()"></div>
+  <div class="info-sheet" id="info-sheet">
+    <div class="sheet-handle"></div>
+    <button class="sheet-close" onclick="cerrarPanel()">&#x2715;</button>
+    <div class="sheet-titulo" id="sheet-titulo"></div>
+    <div class="sheet-numero" id="sheet-numero"></div>
+    <div class="sheet-desc" id="sheet-desc"></div>
+    <div class="sheet-horario" id="sheet-horario"></div>
+  </div>
+  <script>
+    var INFO = {"linea-4141":{"titulo":"L\u00ednea *4141 \u2014 No est\u00e1s solo, no est\u00e1s sola","numero":"*4141","desc":"L\u00ednea gratuita del Ministerio de Salud para personas que est\u00e1n viviendo una crisis emocional o ideaci\u00f3n suicida. Atienden profesionales de salud mental capacitados para entregar contenci\u00f3n, orientaci\u00f3n y derivaci\u00f3n.","horario":"Lunes a domingo | 24 horas | Completamente gratuita"},"salud-responde":{"titulo":"Salud Responde","numero":"600 360 7777","desc":"Servicio telef\u00f3nico del Ministerio de Salud que entrega orientaci\u00f3n profesional en salud, incluyendo salud mental. Permite acceder a consejer\u00eda, informaci\u00f3n sobre centros de atenci\u00f3n y derivaci\u00f3n a servicios de urgencia cuando corresponde.","horario":"Atenci\u00f3n 24/7 | Llamada a tarifa local"},"samu":{"titulo":"SAMU","numero":"131","desc":"Servicio de Atenci\u00f3n M\u00e9dico de Urgencia. Ante una emergencia vital, incluyendo intento de suicidio, el SAMU acude al lugar con personal y equipamiento m\u00e9dico de urgencia.","horario":"Atenci\u00f3n 24/7 | Llamada gratuita desde cualquier tel\u00e9fono"},"san-borja":{"titulo":"Urgencia Psiqui\u00e1trica Infantil","numero":"Hospital San Borja-Arri\u00e1ran, Santiago","desc":"Servicio de urgencia psiqui\u00e1trica para ni\u00f1as, ni\u00f1os y adolescentes menores de 15 a\u00f1os. Ubicado en Av. Santa Rosa 1234, Santiago Centro. El bot\u00f3n abre Google Maps con la ruta desde tu ubicaci\u00f3n.","horario":"Atenci\u00f3n 24/7"},"horwitz":{"titulo":"Urgencia Psiqui\u00e1trica Adultos","numero":"Instituto Horwitz Barak, Recoleta","desc":"Instituto Psiqui\u00e1trico Dr. Jos\u00e9 Horwitz Barak. Principal centro p\u00fablico de atenci\u00f3n psiqui\u00e1trica de adultos de la Regi\u00f3n Metropolitana. El acceso al servicio de urgencias es por Avenida Olivos 837. El bot\u00f3n abre Google Maps con la ruta.","horario":"Atenci\u00f3n 24/7"},"barros-luco":{"titulo":"Urgencia Psiqui\u00e1trica Adultos","numero":"Hospital Barros Luco Trudeau, San Miguel","desc":"Servicio de urgencia psiqui\u00e1trica de adultos del Hospital Barros Luco Trudeau, ubicado en Gran Avenida Jos\u00e9 Miguel Carrera 3204, San Miguel. El bot\u00f3n abre Google Maps con la ruta.","horario":"Atenci\u00f3n 24/7"},"huap":{"titulo":"Urgencia Psiqui\u00e1trica Adultos","numero":"HUAP, Santiago Centro","desc":"Hospital de Urgencia de la Asistencia P\u00fablica. El acceso es por Av. Curic\u00f3 345, Santiago Centro. Recibe urgencias psiqui\u00e1tricas de adultos las 24 horas. El bot\u00f3n abre Google Maps con la ruta.","horario":"Atenci\u00f3n 24/7"},"el-carmen":{"titulo":"Urgencia Psiqui\u00e1trica","numero":"Hospital El Carmen Dr. Luis Valent\u00edn Ferrada, Maip\u00fa","desc":"Pedi\u00e1trica (hasta 14 a\u00f1os, 11 meses y 29 d\u00edas): triage pedi\u00e1trico con atenci\u00f3n prioritaria en casos de ideaci\u00f3n suicida, intento suicida o agitaci\u00f3n psicomotora. Adultos (desde 15 a\u00f1os): equipo m\u00e9dico con ps\u00edc\u00f3logo/a disponible 24 horas. Ubicaci\u00f3n: Camino a Rinconada 1201, Maip\u00fa. Acceso universal, sin derivaci\u00f3n previa.","horario":"Atenci\u00f3n 24 horas | Todos los d\u00edas del a\u00f1o"},"mapa-sapus":{"titulo":"Mapa SAPUs","numero":"Regi\u00f3n Metropolitana","desc":"Los Servicios de Atenci\u00f3n Primaria de Urgencia (SAPU) atienden urgencias de baja y mediana complejidad fuera del horario de los consultorios. El bot\u00f3n abre el mapa con los SAPUs de la Regi\u00f3n Metropolitana.","horario":"Horarios variables seg\u00fan establecimiento | Fines de semana y festivos"},"hablemos-todo":{"titulo":"Chat Hablemos de Todo","numero":"INJUV","desc":"Chat de apoyo emocional del Instituto Nacional de la Juventud, dirigido a j\u00f3venes de 15 a 29 a\u00f1os. Permite conversar con un profesional sobre crisis emocional, salud mental u otras situaciones dif\u00edciles de forma confidencial.","horario":"Lunes a viernes: 10:00 - 22:00 | S\u00e1bados: 11:00 - 17:00 | No atiende festivos"},"hora-segura":{"titulo":"Chat Hora Segura","numero":"Todo Mejora","desc":"Chat de la fundaci\u00f3n Todo Mejora dirigido a ni\u00f1eces, adolescencias y juventudes LGBTQ+ y sus familias. Entrega apoyo emocional y acompa\u00f1amiento en situaciones de crisis, atendido por un equipo multidisciplinario.","horario":"Lunes a domingo, incluidos festivos: 18:00 - 00:00"},"quedate":{"titulo":"Chat Quedate","numero":"Gobierno Regional de Santiago","desc":"Programa de Prevenci\u00f3n del Suicidio del Gobierno Regional de Santiago, ejecutado por el Servicio de Salud Metropolitano Oriente. Brinda chat de ayuda a personas en riesgo de suicidio, de forma an\u00f3nima y con profesionales especializados.","horario":"Lunes a domingo, incluidos festivos: 10:00 - 22:00"}};
+    function abrirPanel(id) {
+      var d = INFO[id]; if (!d) return;
+      document.getElementById('sheet-titulo').textContent = d.titulo;
+      document.getElementById('sheet-numero').textContent = d.numero;
+      document.getElementById('sheet-desc').textContent = d.desc;
+      document.getElementById('sheet-horario').textContent = d.horario;
+      document.getElementById('panel-overlay').classList.add('visible');
+      setTimeout(function(){ document.getElementById('info-sheet').classList.add('visible'); }, 10);
+    }
+    function cerrarPanel() {
+      document.getElementById('info-sheet').classList.remove('visible');
+      setTimeout(function(){ document.getElementById('panel-overlay').classList.remove('visible'); }, 280);
+    }
+  </script>
 </body>
 </html>
