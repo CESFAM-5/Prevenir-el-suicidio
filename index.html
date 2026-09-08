@@ -5,164 +5,72 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prevención del Suicidio — Ayuda y recursos | CESFAM N°5</title>
-<meta name="description" content="Encuentra ayuda inmediata ante una crisis:
-  líneas de emergencia, urgencias psiquiátricas, chats de apoyo y recursos
-  de salud mental en Región Metropolitana de Santiago">
+<meta name="description" content="Encuentra ayuda inmediata ante una crisis: líneas de emergencia, urgencias psiquiátricas, chats de apoyo y recursos de salud mental en Región Metropolitana de Santiago">
 <meta name="robots" content="index, follow">
 <meta name="author" content="CESFAM N°5 — Dirección de Atención Primaria de Salud, DAP. Servicio de Salud Metropolitano Central">
 <link rel="canonical" href="https://cesfam-5.github.io/Prevenir-el-suicidio/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Prevención del Suicidio — Ayuda inmediata">
-<meta property="og:description" content="Líneas de crisis, urgencias psiquiátricas
-  y recursos de salud mental disponibles ahora en Región Metropolitana de Santiago.">
+<meta property="og:description" content="Líneas de crisis, urgencias psiquiátricas y recursos de salud mental disponibles ahora en Región Metropolitana de Santiago.">
 <meta property="og:image" content="https://cesfam-5.github.io/Prevenir-el-suicidio/portada.png">
 <meta property="og:url" content="https://cesfam-5.github.io/Prevenir-el-suicidio/">
 <meta property="og:locale" content="es_CL">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-
-  html, body {
-    width:100%; height:100%;
-    background:#e8f0fc;
-    overflow:hidden;
-  }
-
-  .stage {
-    width:100%;
-    height:100dvh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-  }
-
-  /* El img-wrap se redimensiona por JS */
-  #img-wrap {
-    position:relative;
-    flex-shrink:0;
-  }
-
-  #img-wrap img {
-    display:block;
-    width:100%;
-    height:100%;
-  }
-
-  .hotspot {
-    position:absolute;
-    display:block;
-    background:transparent;
-    z-index:10;
-    -webkit-tap-highlight-color:transparent;
-  }
+  html, body { width:100%; height:100%; background:#e8f0fc; overflow:hidden; }
+  .stage { width:100%; height:100dvh; display:flex; justify-content:center; align-items:center; position:relative; }
+  #img-wrap { position:relative; flex-shrink:0; }
+  #img-wrap img { display:block; width:100%; height:100%; }
+  .hotspot { position:absolute; display:block; background:transparent; z-index:10; -webkit-tap-highlight-color:transparent; }
 
   /* ── Botón hamburguesa ── */
-  #btn-menu {
-    position:fixed;
-    top:14px; right:14px;
-    z-index:100;
-    background:rgba(255,255,255,0.92);
-    border:none;
-    border-radius:50%;
-    width:42px; height:42px;
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    gap:5px;
-    cursor:pointer;
-    box-shadow:0 2px 10px rgba(0,0,0,0.18);
-    -webkit-tap-highlight-color:transparent;
-  }
-  #btn-menu span {
-    display:block;
-    width:18px; height:2px;
-    background:#3B5F7A;
-    border-radius:2px;
-    transition:all 0.2s;
-  }
+  #btn-menu { position:fixed; top:14px; right:14px; z-index:100; background:rgba(255,255,255,0.92); border:none; border-radius:50%; width:42px; height:42px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,0.18); -webkit-tap-highlight-color:transparent; }
+  #btn-menu span { display:block; width:18px; height:2px; background:#3B5F7A; border-radius:2px; transition:all 0.2s; }
 
-  /* ── Panel Quiénes somos ── */
-  #panel-info {
-    position:fixed;
-    inset:0;
-    z-index:200;
-    display:none;
-  }
+  /* ── Panel base (quiénes somos) ── */
+  #panel-info { position:fixed; inset:0; z-index:200; display:none; }
   #panel-info.visible { display:flex; flex-direction:column; }
-  .panel-overlay {
-    position:absolute; inset:0;
-    background:rgba(0,0,0,0.45);
-  }
-  .panel-sheet {
-    position:absolute;
-    bottom:0; left:0; right:0;
-    background:white;
-    border-radius:20px 20px 0 0;
-    padding:20px 20px 36px;
-    max-height:82vh;
-    overflow-y:auto;
-  }
-  .panel-handle {
-    width:36px; height:4px;
-    background:#C8D8E5;
-    border-radius:2px;
-    margin:0 auto 18px;
-  }
-  .panel-close {
-    position:absolute;
-    top:16px; right:16px;
-    background:#F4F6F8;
-    border:none; border-radius:50%;
-    width:28px; height:28px;
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer; font-size:14px; color:#5A6470;
-  }
-  .panel-titulo {
-    font-size:17px; font-weight:700;
-    color:#3B5F7A; margin-bottom:14px;
-    font-family:sans-serif;
-  }
-  .panel-bloque {
-    background:#F4F6F8;
-    border-radius:10px;
-    padding:14px;
-    margin-bottom:10px;
-  }
-  .panel-bloque-label {
-    font-size:11px; font-weight:600;
-    color:#3B5F7A; text-transform:uppercase;
-    letter-spacing:0.06em; margin-bottom:6px;
-    font-family:sans-serif;
-  }
-  .panel-bloque-texto {
-    font-size:14px; color:#1A1A1A;
-    line-height:1.55; font-family:sans-serif;
-  }
-  .panel-bloque-texto a {
-    color:#3B5F7A; text-decoration:none;
-    border-bottom:1px solid #C8D8E5;
-  }
-  .panel-nota {
-    font-size:12px; color:#5A6470;
-    line-height:1.5; font-family:sans-serif;
-    margin-top:14px; text-align:center;
-  }
+  .panel-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+  .panel-sheet { position:absolute; bottom:0; left:0; right:0; background:white; border-radius:20px 20px 0 0; padding:20px 20px 36px; max-height:82vh; overflow-y:auto; }
+  .panel-handle { width:36px; height:4px; background:#C8D8E5; border-radius:2px; margin:0 auto 18px; }
+  .panel-close { position:absolute; top:16px; right:16px; background:#F4F6F8; border:none; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:14px; color:#5A6470; }
+  .panel-titulo { font-size:17px; font-weight:700; color:#3B5F7A; margin-bottom:14px; font-family:sans-serif; }
+  .panel-bloque { background:#F4F6F8; border-radius:10px; padding:14px; margin-bottom:10px; }
+  .panel-bloque-label { font-size:11px; font-weight:600; color:#3B5F7A; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; font-family:sans-serif; }
+  .panel-bloque-texto { font-size:14px; color:#1A1A1A; line-height:1.55; font-family:sans-serif; }
+  .panel-bloque-texto a { color:#3B5F7A; text-decoration:none; border-bottom:1px solid #C8D8E5; }
+  .panel-nota { font-size:12px; color:#5A6470; line-height:1.5; font-family:sans-serif; margin-top:14px; text-align:center; }
+
+  /* ── Botón guardar en celular (dentro del panel) ── */
+  .btn-instalar { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:14px; padding:12px; background:#3B5F7A; color:white; border:none; border-radius:10px; font-size:14px; font-weight:600; font-family:sans-serif; cursor:pointer; }
+  .btn-instalar:active { opacity:0.85; }
+
+  /* ── Panel instalar (independiente) ── */
+  #panel-instalar { position:fixed; inset:0; z-index:300; display:none; }
+  #panel-instalar.visible { display:flex; flex-direction:column; }
+  .panel-cierre { position:absolute; top:16px; right:16px; background:#F4F6F8; border:none; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .panel-cierre svg { width:14px; height:14px; stroke:#5A6470; }
+  .panel-texto { font-size:14px; color:#1A1A1A; line-height:1.6; font-family:sans-serif; margin-bottom:10px; }
+  .panel-equipo { margin-top:14px; }
+  .panel-equipo-titulo { font-size:12px; font-weight:700; color:#3B5F7A; margin-bottom:10px; font-family:sans-serif; }
+  .panel-paso { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid #E8EFF5; font-family:sans-serif; }
+  .panel-paso:last-child { border-bottom:none; }
+  .panel-paso-num { background:#3B5F7A; color:white; border-radius:50%; width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
+  .panel-paso-texto { font-size:13px; color:#1A1A1A; line-height:1.5; }
 </style>
- <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8T3QZPR724"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-8T3QZPR724');
 </script>
 </head>
 <body>
+
 <!-- ── Botón hamburguesa ── -->
 <button id="btn-menu" onclick="abrirPanel()" aria-label="Información sobre este sitio">
-  <span></span>
-  <span></span>
-  <span></span>
+  <span></span><span></span><span></span>
 </button>
 
 <!-- ── Panel Quiénes somos ── -->
@@ -175,10 +83,40 @@
 
     <div class="panel-bloque">
       <div class="panel-bloque-label">Quiénes somos</div>
-      <div class="panel-bloque-texto">Este sitio es desarrollado por el equipo del <strong>Programa de Participación Ciudadana</strong> del CESFAM N° 5. <br>Santiago</div>
+      <div class="panel-bloque-texto">Este sitio es desarrollado por el equipo del <strong>Programa de Participación Ciudadana</strong> del CESFAM N°5.<br>Santiago</div>
     </div>
 
-    <!-- ══════════ PANEL GUARDAR EN EL CELULAR ══════════ -->
+    <div class="panel-bloque">
+      <div class="panel-bloque-label">Contacto</div>
+      <div class="panel-bloque-texto">
+        Trab. Social Francisco Muñoz T.<br>
+        <a href="mailto:francisco.munozto@redsalud.gob.cl">francisco.munozto@redsalud.gob.cl</a>
+      </div>
+    </div>
+
+    <div class="panel-bloque">
+      <div class="panel-bloque-label">Propósito</div>
+      <div class="panel-bloque-texto">Este sitio orienta a personas en crisis y a quienes las rodean sobre recursos de salud mental disponibles en la Región Metropolitana.</div>
+    </div>
+
+    <div class="panel-bloque">
+      <div class="panel-bloque-label">Elaboración</div>
+      <div class="panel-bloque-texto">Este sitio fue desarrollado con el apoyo de inteligencia artificial (Claude, de Anthropic) como herramienta de trabajo. El contenido, la verificación de la información y las decisiones de diseño fueron responsabilidad del equipo humano.</div>
+    </div>
+
+    <button class="btn-instalar" onclick="cerrarPanel(); setTimeout(abrirInstalar, 200);">
+      📲 Guardar en mi celular
+    </button>
+
+    <p class="panel-nota">Este sitio no reemplaza la atención profesional.<br>En caso de emergencia llama al <strong>131</strong> o al <strong>*4141</strong>.</p>
+    <p class="panel-nota" style="margin-top:10px; padding-top:10px; border-top:1px solid #E8EFF5;">
+      📅 Última revisión de contenidos: <strong>junio 2026</strong><br>
+      📝 Próxima revisión programada: <strong>diciembre 2026</strong>
+    </p>
+  </div>
+</div>
+
+<!-- ── Panel Guardar en el celular (independiente) ── -->
 <div id="panel-instalar">
   <div class="panel-overlay" onclick="cerrarInstalar()"></div>
   <div class="panel-sheet">
@@ -187,7 +125,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="panel-titulo">Guárdanos en tu celular</div>
-    <p class="panel-texto">Agrega esta Guía a la pantalla de inicio de tu celular y ábrela como una app, sin tener que escribir la dirección cada vez.</p>
+    <p class="panel-texto">Agrega este sitio a la pantalla de inicio de tu celular y ábrelo como una app, sin tener que escribir la dirección cada vez.</p>
 
     <div class="panel-equipo">
       <div class="panel-equipo-titulo">📱 En iPhone (Safari)</div>
@@ -221,58 +159,21 @@
       </div>
     </div>
 
-    <p class="panel-texto" style="margin-top:18px; font-size:12px; color:var(--texto-suave);">El ícono de la Guía quedará junto a tus demás apps, y se abrirá directo en pantalla completa.</p>
-  </div>
-</div>
-
-    <div class="panel-bloque">
-      <div class="panel-bloque-label">Contacto</div>
-      <div class="panel-bloque-texto">
-        Trab. Social Francisco Muñoz T.<br>
-        <a href="mailto:francisco.munozto@redsalud.gob.cl">francisco.munozto@redsalud.gob.cl</a>
-      </div>
-    </div>
-
-    <div class="panel-bloque">
-      <div class="panel-bloque-label">Propósito</div>
-      <div class="panel-bloque-texto">Este sitio orienta a personas en crisis y a quienes las rodean sobre recursos de salud mental disponibles en la Región Metropolitana.</div>
-    </div>
-
-    <div class="panel-bloque">
-      <div class="panel-bloque-label">Elaboración</div>
-      <div class="panel-bloque-texto">Este sitio fue desarrollado con el apoyo de inteligencia artificial (Claude, de Anthropic) como herramienta de trabajo. El contenido, la verificación de la información y las decisiones de diseño fueron responsabilidad del equipo humano.</div>
-    </div>
-
-    <p class="panel-nota">Este sitio no reemplaza la atención profesional.<br>En caso de emergencia llama al <strong>131</strong> o al <strong>*4141</strong>.</p>
-    <p class="panel-nota" style="margin-top:10px; padding-top:10px; border-top:1px solid #E8EFF5;">
-      📅 Última revisión de contenidos: <strong>junio 2026</strong><br>
-      📝 Próxima revisión programada: <strong>diciembre 2026</strong>
-    </p>
+    <p class="panel-texto" style="margin-top:18px; font-size:12px; color:#5A6470;">El ícono del sitio quedará junto a tus demás apps y se abrirá directo en pantalla completa.</p>
   </div>
 </div>
 
 <div class="stage">
   <div id="img-wrap">
     <img id="portada" src="./portada.png" alt="Prevención y cuidado">
+    <a href="./rojo.html" class="hotspot" id="h-rojo" aria-label="Zona Roja - ayuda inmediata"></a>
+    <a href="./amarillo.html" class="hotspot" id="h-amarillo" aria-label="Zona Amarilla - orientación"></a>
+    <a href="./verde.html" class="hotspot" id="h-verde" aria-label="Zona Verde - autocuidado"></a>
+    <a href="https://api.whatsapp.com/send?text=Te%20comparto%20este%20sitio%20con%20recursos%20de%20apoyo%20en%20salud%20mental%20para%20la%20Regi%C3%B3n%20Metropolitana%3A%20https%3A%2F%2Fcesfam-5.github.io%2FPrevenir-el-suicidio%2F" target="_blank" rel="noopener noreferrer" class="hotspot" id="h-wa" aria-label="Compartir por WhatsApp"></a>
+  </div>
+</div>
 
-    <!-- Hotspots en % de la imagen original 1080x1920 -->
-    <!-- ROJO: semáforo rojo + texto -->
-    <a href="./rojo.html" class="hotspot" id="h-rojo"
-       aria-label="Zona Roja - ayuda inmediata"></a>
-
-    <!-- AMARILLO: semáforo amarillo + texto -->
-    <a href="./amarillo.html" class="hotspot" id="h-amarillo"
-       aria-label="Zona Amarilla - orientación"></a>
-
-    <!-- VERDE: semáforo verde + texto -->
-    <a href="./verde.html" class="hotspot" id="h-verde"
-       aria-label="Zona Verde - autocuidado"></a>
-    
-<!-- WHATSAPP (círculo abajo derecha) -->
-<a href="https://api.whatsapp.com/send?text=Te%20comparto%20este%20sitio%20con%20recursos%20de%20apoyo%20en%20salud%20mental%20para%20la%20Regi%C3%B3n%20Metropolitana%3A%20https%3A%2F%2Fcesfam-5.github.io%2FPrevenir-el-suicidio%2F" target="_blank" rel="noopener noreferrer" class="hotspot" id="h-wa" aria-label="Compartir por WhatsApp"></a>    <script>
-      
-  // Proporciones de cada hotspot sobre la imagen 1080x1920
-  // formato: [left%, top%, width%, height%, borderRadius]
+<script>
   const SPOTS = {
     'h-rojo':    [8,   33.5, 84, 16.5, '12px'],
     'h-amarillo':[8,   52.0, 84, 16.5, '12px'],
@@ -283,32 +184,18 @@
 
   function resize() {
     const wrap = document.getElementById('img-wrap');
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const imgRatio = 1080 / 1920; // 9:16
-
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const imgRatio = 1080 / 1920;
     let w, h;
-    if (vw / vh < imgRatio) {
-      // pantalla más alta que la imagen → ajustar por ancho
-      w = vw;
-      h = vw / imgRatio;
-    } else {
-      // pantalla más ancha → ajustar por alto
-      h = vh;
-      w = vh * imgRatio;
-    }
-
-    wrap.style.width  = w + 'px';
+    if (vw / vh < imgRatio) { w = vw; h = vw / imgRatio; }
+    else { h = vh; w = vh * imgRatio; }
+    wrap.style.width = w + 'px';
     wrap.style.height = h + 'px';
-
-    // Posicionar cada hotspot
     for (const [id, [l, t, bw, bh, br]] of Object.entries(SPOTS)) {
       const el = document.getElementById(id);
       if (!el) continue;
-      el.style.left         = (l / 100 * w) + 'px';
-      el.style.top          = (t / 100 * h) + 'px';
-      el.style.width        = (bw / 100 * w) + 'px';
-      el.style.height       = (bh / 100 * h) + 'px';
+      el.style.left = (l/100*w)+'px'; el.style.top = (t/100*h)+'px';
+      el.style.width = (bw/100*w)+'px'; el.style.height = (bh/100*h)+'px';
       el.style.borderRadius = br;
     }
   }
@@ -317,12 +204,10 @@
   window.addEventListener('resize', resize);
   resize();
 
-  function abrirPanel() {
-    document.getElementById('panel-info').classList.add('visible');
-  }
-  function cerrarPanel() {
-    document.getElementById('panel-info').classList.remove('visible');
-  }
+  function abrirPanel()    { document.getElementById('panel-info').classList.add('visible'); }
+  function cerrarPanel()   { document.getElementById('panel-info').classList.remove('visible'); }
+  function abrirInstalar() { document.getElementById('panel-instalar').classList.add('visible'); }
+  function cerrarInstalar(){ document.getElementById('panel-instalar').classList.remove('visible'); }
 </script>
 </body>
 </html>
